@@ -1,7 +1,16 @@
 ﻿@section SPAViews {
-    @Html.Partial("_Home")
+<div id="applicationHost">
+    <div class="splash">
+        <div id="bands"></div>
+        <div class="message">
+            Update your browser!
+        </div>
+        <i class="icon-spinner icon-2x icon-spin active"></i>
+    </div>
+</div>
 }
 @section Scripts{
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/app")
+    <script type="text/javascript" src="~/Scripts/require.js" data-main="Scripts/mainApp/main"></script>
 }
