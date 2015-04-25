@@ -1,4 +1,9 @@
 ﻿using System;
+
+using AppRent.BusinessLogic.Managers.Concrete;
+using AppRent.DataAccess.Contexts;
+using AppRent.Entities.Models;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -38,7 +43,7 @@ namespace AppRent.WebApi
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(ApartmentContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
