@@ -53,6 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\ApartmentContext.cs" />
+    <Compile Include="Migrations\201504252110417_InitialEntities.cs" />
+    <Compile Include="Migrations\201504252110417_InitialEntities.Designer.cs">
+      <DependentUpon>201504252110417_InitialEntities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +73,11 @@
       <Project>{B62F9C61-233B-40C9-AE02-DEF00FDE51FF}</Project>
       <Name>AppRent.DataAccess.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201504252110417_InitialEntities.resx">
+      <DependentUpon>201504252110417_InitialEntities.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
