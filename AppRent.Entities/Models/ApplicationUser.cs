@@ -22,5 +22,7 @@ namespace AppRent.Entities.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual ICollection<Apartment> Apartments { get; set; } 
     }
 }

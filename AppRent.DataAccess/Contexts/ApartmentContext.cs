@@ -25,5 +25,20 @@ namespace AppRent.DataAccess.Contexts
         {
             return new ApartmentContext();
         }
+
+        public DbSet<Apartment> Apartments { get; set; }
+
+        public DbSet<Photo> Photos { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<District> Districts { get; set; }
+
+        public DbSet<Metro> Metros { get; set; }
+
+        public DbSet<Street> Streets { get; set; }
+
+        public DbSet<House> Houses { get; set; } 
+
     }
 }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 using AppRent.DataAccess.Contexts;
 
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace AppRent.DataAccess.Migrations
 {
