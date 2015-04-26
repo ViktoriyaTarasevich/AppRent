@@ -59,11 +59,12 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Concrete\BaseRepository.cs" />
+    <Compile Include="Repositories\Interface\IBaseRepository.cs" />
+    <Compile Include="UnitOfWork\Concrete\UnitOfWork.cs" />
+    <Compile Include="UnitOfWork\Interface\IUnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
