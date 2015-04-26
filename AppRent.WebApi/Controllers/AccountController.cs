@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using AppRent.BusinessLogic.Managers.Concrete;
+using AppRent.Common.ViewModels;
 using AppRent.Entities.Models;
 
 using Microsoft.AspNet.Identity;
@@ -14,7 +15,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
-using AppRent.WebApi.Models;
 
 namespace AppRent.WebApi.Controllers
 {

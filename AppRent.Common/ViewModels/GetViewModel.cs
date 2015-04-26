@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AppRent.WebApi.Models
+namespace AppRent.Common.ViewModels
 {
-    // Models returned by MeController actions.
     public class GetViewModel
     {
         public string Hometown { get; set; }
