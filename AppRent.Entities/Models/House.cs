@@ -15,5 +15,7 @@ namespace AppRent.Entities.Models
         public int StreetId { get; set; }
 
         public Street Street { get; set; }
+
+        public ICollection<Apartment> Apartments { get; set; } 
     }
 }

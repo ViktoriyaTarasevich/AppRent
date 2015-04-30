@@ -1,5 +1,7 @@
 using System.Web.Http;
 
+using AppRent.BusinessLogic.Services.Concrete;
+using AppRent.BusinessLogic.Services.Interface;
 using AppRent.DataAccess.UnitOfWork.Concrete;
 using AppRent.DataAccess.UnitOfWork.Interface;
 
@@ -68,6 +70,7 @@ namespace AppRent.WebApi.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            kernel.Bind<IApartmentService>().To<ApartmentService>();
         }        
     }
 }

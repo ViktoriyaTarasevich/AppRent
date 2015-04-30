@@ -20,7 +20,12 @@ namespace AppRent.Entities.Models
 
         public ApplicationUser ApplicationUser { get; set; }
 
-        public virtual ICollection<Photo> Photos { get; set; } 
+        public virtual ICollection<Photo> Photos { get; set; }
+
+        [Column("House_Id")]
+        public int HouseId { get; set; }
+
+        public virtual House House { get; set; }
 
     }
 }

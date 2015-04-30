@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+using AppRent.BusinessLogic.Services.Interface;
+using AppRent.Common.ViewModels;
 using AppRent.DataAccess.UnitOfWork.Interface;
 
 
@@ -13,17 +15,19 @@ namespace AppRent.WebApi.ApiControllers
     public class ApartmentController : ApiController
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IApartmentService _apartmentService;
 
-        public ApartmentController(IUnitOfWork unitOfWork)
+        public ApartmentController(IUnitOfWork unitOfWork, IApartmentService apartmentService)
         {
             _unitOfWork = unitOfWork;
+            _apartmentService = apartmentService;
         }
 
         
         // GET: api/Apartment
-        public IEnumerable<string> Get()
+        public IEnumerable<ApartmentViewModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _apartmentService.GetApartments();
         }
 
         // GET: api/Apartment/5

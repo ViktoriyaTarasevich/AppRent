@@ -59,12 +59,17 @@
   <ItemGroup>
     <Compile Include="Managers\Concrete\ApplicationUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Concrete\ApartmentService.cs" />
+    <Compile Include="Services\Interface\IApartmentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Managers\Interface\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppRent.Common\AppRent.Common.csproj">
+      <Project>{F197CDFC-7B35-44C0-BA48-71F88D2A8909}</Project>
+      <Name>AppRent.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AppRent.DataAccess\AppRent.DataAccess.csproj">
       <Project>{65383256-4BC9-4289-892E-837F19906A1C}</Project>
       <Name>AppRent.DataAccess</Name>
