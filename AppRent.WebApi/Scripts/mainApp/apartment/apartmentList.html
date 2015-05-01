@@ -1,3 +1,20 @@
-﻿<div>
-    Apartments
-</div> 
+﻿<div class="row" style="margin-top:20px">
+    <div data-bind="foreach: apartmets">
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img data-bind="attr:{src: pathToPhoto}" />
+                <div class="caption">
+                    <h3>
+                        ул. <span data-bind="text:street"></span>
+                        д. <span data-bind="text:house"></span>
+                    </h3>
+                    <p>Количество комнат: <span data-bind="text:roomsCount"></span></p>
+
+                    <p><a href="#" class="btn btn-primary" role="button">Show more</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

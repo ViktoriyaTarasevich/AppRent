@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using AppRent.BusinessLogic.Services.Interface;
 using AppRent.Common.ViewModels;
@@ -23,7 +20,8 @@ namespace AppRent.BusinessLogic.Services.Concrete
 
         public IEnumerable<ApartmentViewModel> GetApartments()
         {
-            return _apartmentRepository.GetAll().Select(MapToViewModel);
+            var result = _apartmentRepository.GetAll().ToList().Select(MapToViewModel);
+            return result;
         }
 
         private ApartmentViewModel MapToViewModel(Apartment model)

@@ -237,7 +237,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\photos\1.jpg" />
+    <Content Include="grunt\Gruntfile.js" />
+    <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\mainApp\main.js" />
+    <Content Include="Scripts\mainApp\services\apartmentsService.js" />
     <Content Include="Scripts\mainApp\shell.html" />
     <Content Include="Scripts\mainApp\shell.js" />
     <Content Include="Scripts\mainApp\apartment\apartmentList.js" />

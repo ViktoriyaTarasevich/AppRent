@@ -9,5 +9,7 @@ namespace AppRent.Entities.Models
     public class City : BaseEntity
     {
         public string Title { get; set; }
+
+        public virtual ICollection<District> Districts { get; set; } 
     }
 }

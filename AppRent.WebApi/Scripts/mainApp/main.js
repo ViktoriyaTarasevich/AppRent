@@ -7,7 +7,8 @@
         'transitions': 'durandal/transitions',
         'knockout': 'knockout-3.1.0',
         'jquery': 'jquery-1.10.2',
-        'bootstrap': 'bootstrap'
+        'bootstrap': 'bootstrap',
+        'lodash': 'lodash'
     }
 });
 
