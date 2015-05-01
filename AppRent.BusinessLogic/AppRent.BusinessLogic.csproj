@@ -60,7 +60,9 @@
     <Compile Include="Managers\Concrete\ApplicationUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Concrete\ApartmentService.cs" />
+    <Compile Include="Services\Concrete\UserService.cs" />
     <Compile Include="Services\Interface\IApartmentService.cs" />
+    <Compile Include="Services\Interface\IUserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Managers\Interface\" />

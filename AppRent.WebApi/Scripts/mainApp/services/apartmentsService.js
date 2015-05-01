@@ -3,13 +3,13 @@
 
         var ApartementsService = function () {
             var self = this;
-            var url = '../api/Apartment';
+            var url = '../api/Apartment/';
 
             self.getApartments = function (requestData) {
                 return $.ajax({
                     method: 'GET',
                     url: url,
-                    data: requestData
+                    data: requestData 
                 });
             }
 
@@ -23,7 +23,7 @@
             self.getApartmentsByUserId = function (userId) {
                 return $.ajax({
                     method: 'GET',
-                    url: url + '/GetApartmentsByUserId',
+                    url: url + 'GetApartmentsByUserId',
                     data: {userId : userId}
                 });
             }

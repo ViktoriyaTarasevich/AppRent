@@ -71,6 +71,7 @@ namespace AppRent.WebApi.App_Start
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             kernel.Bind<IApartmentService>().To<ApartmentService>();
+            kernel.Bind<IUserService>().To<UserService>();
         }        
     }
 }

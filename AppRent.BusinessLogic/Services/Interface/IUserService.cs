@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRent.Common.ViewModels;
+using AppRent.Entities.Models;
 
 
 namespace AppRent.BusinessLogic.Services.Interface
 {
-    public interface IApartmentService
+    public interface IUserService
     {
-        IEnumerable<ApartmentViewModel> GetApartments();
+        UserViewModel MapToUserViewModel(ApplicationUser model);
 
-        FullApartmentViewModel GetApartmentById(int id);
+        UserViewModel GetUserById(string id);
     }
 }

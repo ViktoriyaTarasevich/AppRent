@@ -12,7 +12,7 @@ namespace AppRent.Entities.Models
 
         public int DistrictId { get; set; }
 
-        public District District { get; set; }
+        public virtual District District { get; set; }
 
         public virtual ICollection<House> Houses { get; set; } 
     }

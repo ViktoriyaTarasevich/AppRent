@@ -27,7 +27,7 @@ namespace AppRent.DataAccess.Repositories.Concrete
 
         public TEntity GetById(TKey id)
         {
-            if (id == null)
+            if (id != null)
             {
                 return _dbSet.Find(id);
             }

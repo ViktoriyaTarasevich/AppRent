@@ -1,0 +1,8 @@
+﻿<div class="jumbotron">
+    <div data-bind="foreach:apartment.photos">
+        <div data-bind="visible: $data.isMain">
+            <img data-bind="attr:{src:$data.path}" />
+            <h4 data-bind="text: $data.description"></h4>
+        </div> 
+    </div> 
+</div>

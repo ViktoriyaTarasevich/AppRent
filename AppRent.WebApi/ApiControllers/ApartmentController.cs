@@ -31,9 +31,9 @@ namespace AppRent.WebApi.ApiControllers
         }
 
         // GET: api/Apartment/5
-        public string Get(int id)
+        public FullApartmentViewModel Get(int id)
         {
-            return "value";
+            return _apartmentService.GetApartmentById(id);
         }
 
         // POST: api/Apartment

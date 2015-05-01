@@ -190,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\ApartmentController.cs" />
+    <Compile Include="ApiControllers\UserController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectResolver.cs" />
@@ -240,6 +241,8 @@
     <Content Include="Content\photos\1.jpg" />
     <Content Include="grunt\Gruntfile.js" />
     <Content Include="Scripts\lodash.js" />
+    <Content Include="Scripts\mainApp\apartment\apartment.html" />
+    <Content Include="Scripts\mainApp\apartment\apartment.js" />
     <Content Include="Scripts\mainApp\main.js" />
     <Content Include="Scripts\mainApp\services\apartmentsService.js" />
     <Content Include="Scripts\mainApp\shell.html" />
