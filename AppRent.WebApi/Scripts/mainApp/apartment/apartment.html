@@ -1,8 +1,29 @@
-﻿<div class="jumbotron">
-    <div data-bind="foreach:apartment.photos">
-        <div data-bind="visible: $data.isMain">
-            <img data-bind="attr:{src:$data.path}" />
-            <h4 data-bind="text: $data.description"></h4>
-        </div> 
-    </div> 
+﻿<!--<div data-bind="with:apartment">
+    <h3><span class="label label-default" data-bind="text: '№' + id"></span></h3>
+
+    <div class="jumbotron">
+        <div data-bind="foreach:photos">
+            <div data-bind="if: isMain">
+                <img data-bind="attr:{src:path}" />
+                <span data-bind="with:$parent.address">
+                    <span data-bind="text:city"></span>,
+                    <span data-bind="text:district"></span>,
+                    <span data-bind="text:street"></span>,
+                    <span data-bind="text:houseNumber"></span>
+                    <span data-bind="text:corpus"></span>
+                </span>
+                <h4 data-bind="text: $parent.description"></h4>
+                <h4>Количество комнат: <span data-bind="text: $parent.roomsCount"></span></h4>
+                <h4>Цена: <span data-bind="text: $parent.price"></span> $</h4>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="row" data-bind="with:apartment" >
+
+    <ul class="bxSlider"  data-bind="foreach: photos, imageCarousel: photos">
+        <li style="margin-left: 300px">
+            <img data-bind="attr:{src:path}" height="400" />
+        </li>
+    </ul>
 </div>
