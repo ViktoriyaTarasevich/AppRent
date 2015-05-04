@@ -9,7 +9,9 @@
         'jquery': 'jquery-1.10.2',
         'bootstrap': 'bootstrap',
         'lodash': 'lodash',
-        'bxslider': 'jquery.bxslider'
+        'bxslider': 'jquery.bxslider',
+        'gmaps': 'gmaps',
+        'sensor': 'sensor'
     }
 });
 

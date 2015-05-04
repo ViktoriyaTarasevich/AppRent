@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 
 using AppRent.BusinessLogic.Services.Interface;
+using AppRent.Common.Filters;
 using AppRent.Common.ViewModels;
 using AppRent.DataAccess.UnitOfWork.Interface;
 
@@ -25,7 +26,7 @@ namespace AppRent.WebApi.ApiControllers
 
         
         // GET: api/Apartment
-        public IEnumerable<ApartmentViewModel> Get()
+        public IEnumerable<ApartmentViewModel> Get([FromUri]ApartmentFilter filter)
         {
             return _apartmentService.GetApartments();
         }

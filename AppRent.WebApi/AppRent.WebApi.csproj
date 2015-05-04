@@ -241,10 +241,12 @@
     <Content Include="Content\jquery.bxslider.css" />
     <Content Include="Content\photos\1.jpg" />
     <Content Include="grunt\Gruntfile.js" />
+    <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\jquery.bxslider.js" />
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\mainApp\apartment\apartment.html" />
     <Content Include="Scripts\mainApp\apartment\apartment.js" />
+    <Content Include="Scripts\mainApp\common\settings.js" />
     <Content Include="Scripts\mainApp\main.js" />
     <Content Include="Scripts\mainApp\services\apartmentsService.js" />
     <Content Include="Scripts\mainApp\shell.html" />
@@ -315,6 +317,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Scripts\sensor.js" />
     <Content Include="Scripts\text.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\app\_run.js" />

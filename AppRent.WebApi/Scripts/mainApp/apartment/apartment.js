@@ -1,6 +1,6 @@
 ﻿define([
-    'durandal/system', 'durandal/app', 'mainApp/services/apartmentsService', 'knockout', 'jquery', 'bxslider'],
-    function (system, app, apartmentService, ko,$) {
+    'durandal/system', 'durandal/app', 'mainApp/services/apartmentsService', 'knockout', 'jquery', 'gmaps', 'bxslider','sensor'],
+    function (system, app, apartmentService, ko,$,GMaps) {
 
         var apartment = function () {
             
@@ -21,7 +21,6 @@
 
         ko.bindingHandlers.imageCarousel = {
             init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                //var options = valueAccessor();
                 $(element).bxSlider({
                     adaptiveHeight : true
                 });
@@ -31,6 +30,20 @@
             }
         };
 
+        ko.bindingHandlers.maps = {
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                var map = new google.maps.Map(
+                    document.getElementById('map'), 
+                    {
+                      zoom: 15,
+                      center: new google.maps.LatLng(-12, -77)
+                    }
+                );
+            },
+            update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+            }
+        };
 
         return new apartment();
     });
