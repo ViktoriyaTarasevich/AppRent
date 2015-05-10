@@ -95,5 +95,12 @@ namespace AppRent.BusinessLogic.Services.Concrete
             };
             return addressViewModel;
         }
+
+        public void Save(FullApartmentViewModel viewModel)
+        {
+            var address = viewModel.Address;
+            
+
+        }
     }
 }

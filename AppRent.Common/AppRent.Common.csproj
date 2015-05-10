@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\ComparisonType.cs" />
+    <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Filters\ApartmentFilter.cs" />
     <Compile Include="Filters\CityFilter.cs" />
     <Compile Include="Filters\PriceFilter.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="ViewModels\PhotoViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

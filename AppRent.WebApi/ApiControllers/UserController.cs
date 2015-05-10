@@ -38,6 +38,7 @@ namespace AppRent.WebApi.ApiControllers
         [Route("api/User/CurrentUser")]
         public UserViewModel GetCurrentUser()
         {
+            var user = User;
             return _userService.GetUserById(User.Identity.GetUserId());
         }
 

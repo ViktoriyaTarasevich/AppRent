@@ -29,7 +29,8 @@ namespace AppRent.BusinessLogic.Services.Concrete
             {
                 Id = model.Id,
                 Email = model.Email,
-                Name = model.UserName
+                Name = model.UserName,
+                Role = model.Roles.FirstOrDefault() != null ? new RoleViewModel() { Id = model.Roles.FirstOrDefault().RoleId } : null
             };
             return userViewModel;
         }

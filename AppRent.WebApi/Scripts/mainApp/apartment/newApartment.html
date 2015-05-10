@@ -1,0 +1,67 @@
+﻿<form class="form-horizontal" data-bind="with: apartment">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon">Цена</div>
+            <input type="number" class="form-control" data-bind="value:price">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon">Город</div>
+            <input type="text" class="form-control" data-bind="value:city">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon">Район</div>
+            <input type="text" class="form-control" data-bind="value:district">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon">Улица</div>
+            <input type="text" class="form-control" data-bind="value:street">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon">Дом</div>
+            <input type="number" class="form-control" data-bind="value:house">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon">Корпус</div>
+            <input type="text" class="form-control" data-bind="value:corpus">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon">Количество комнат</div>
+            <input type="number" class="form-control" data-bind="value:roomsCount">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="input-group">
+            <label class="input-group-addon">Описание</label>
+            <textarea class="form-control" rows="3" data-bind="value:description"></textarea>
+        </div>
+    </div>
+
+    
+    
+    <div class="form-group">
+        <input type="file" name="upload" id="upload" multiple data-bind="value:photos">
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-primary" data-bind="click:$parent.save">Save</button>
+</form>

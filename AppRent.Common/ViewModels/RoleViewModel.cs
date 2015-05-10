@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace AppRent.Common.ViewModels
 {
-    public class UserViewModel
+    public class RoleViewModel
     {
         public string Id { get; set; }
 
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-
-        public RoleViewModel Role { get; set; }
+        
     }
 }

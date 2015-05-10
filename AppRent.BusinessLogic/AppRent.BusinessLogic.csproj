@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\Concrete\ApplicationRoleManager.cs" />
     <Compile Include="Managers\Concrete\ApplicationUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Concrete\ApartmentService.cs" />

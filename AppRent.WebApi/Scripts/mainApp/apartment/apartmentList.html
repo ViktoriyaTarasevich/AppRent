@@ -1,4 +1,10 @@
-﻿<div class="row" style="margin-top:20px">
+﻿<div class="row" data-bind="if: isUser || isHomeowner">
+  <a class="btn btn-default" href="#newApartment">Добавить квартиру</a>  
+</div>
+<div class="row" data-bind="if: isHomeowner">
+    <a class="btn btn-default" href="#myApartments">Мои квартиры</a>
+</div>
+<div class="row" style="margin-top:20px">
     <form class="form-inline" data-bind="with: searchOptions">
         <div class="form-group" data-bind="with:cityFilter">
             <label for="inputDistrict">Город</label>

@@ -246,9 +246,14 @@
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\mainApp\apartment\apartment.html" />
     <Content Include="Scripts\mainApp\apartment\apartment.js" />
+    <Content Include="Scripts\mainApp\apartment\myApartments.html" />
+    <Content Include="Scripts\mainApp\apartment\myApartments.js" />
+    <Content Include="Scripts\mainApp\apartment\newApartment.html" />
+    <Content Include="Scripts\mainApp\apartment\newApartment.js" />
     <Content Include="Scripts\mainApp\common\settings.js" />
     <Content Include="Scripts\mainApp\main.js" />
     <Content Include="Scripts\mainApp\services\apartmentsService.js" />
+    <Content Include="Scripts\mainApp\services\usersService.js" />
     <Content Include="Scripts\mainApp\shell.html" />
     <Content Include="Scripts\mainApp\shell.js" />
     <Content Include="Scripts\mainApp\apartment\apartmentList.js" />

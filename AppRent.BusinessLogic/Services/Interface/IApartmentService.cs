@@ -14,5 +14,7 @@ namespace AppRent.BusinessLogic.Services.Interface
         IEnumerable<ApartmentViewModel> GetApartments();
 
         FullApartmentViewModel GetApartmentById(int id);
+
+        void Save(FullApartmentViewModel viewModel);
     }
 }

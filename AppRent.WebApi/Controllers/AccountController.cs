@@ -22,14 +22,16 @@ namespace AppRent.WebApi.Controllers
     public class AccountController : Controller
     {
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
+            _roleManager = roleManager;
         }
 
         public ApplicationUserManager UserManager
@@ -42,6 +44,15 @@ namespace AppRent.WebApi.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set { _roleManager = value; }
         }
 
         // The Authorize Action is the end point which gets called when you access any
@@ -77,7 +88,9 @@ namespace AppRent.WebApi.Controllers
                 var user = await UserManager.FindAsync(model.Email, model.Password);
                 if (user != null)
                 {
+
                     await SignInAsync(user, model.RememberMe);
+                    
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -107,12 +120,29 @@ namespace AppRent.WebApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
+                var user = new ApplicationUser() { UserName = model.Name, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
 
+                    if (!RoleManager.RoleExists("User"))
+                    {
+                        RoleManager.Create(new UserRole()
+                        {
+                            Id = "1",
+                            Name = "User"
+                        });
+                    }
+                    
+                    if (!UserManager.IsInRole(user.Id, "User"))
+                    {
+                        UserManager.AddToRole(user.Id, "User");
+                    }
+
+
+
+                    
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

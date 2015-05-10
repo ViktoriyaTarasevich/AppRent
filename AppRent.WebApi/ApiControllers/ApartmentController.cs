@@ -38,8 +38,9 @@ namespace AppRent.WebApi.ApiControllers
         }
 
         // POST: api/Apartment
-        public void Post([FromBody]string value)
+        public void Post([FromBody]FullApartmentViewModel value)
         {
+            _apartmentService.Save(value);
         }
 
         // PUT: api/Apartment/5
