@@ -17,14 +17,14 @@
 
             self.isHomeowner = ko.observable(false);
             self.isUser = ko.observable(false);
-
+            self.isAdmin = ko.observable(false);
             self.searchOptions = {
                 cityFilter :{ city: ko.observable, comprasionType: ko.observable()} ,
                 priceFilter: { price: ko.observable, comprasionType: ko.observable() },
                 roomsCountFilter: { roomsCount: ko.observable, comprasionType: ko.observable() }
             }
             self.apartmets = ko.observableArray();
-
+            
             apartmentService.getApartments().then(function (items) {
                 self.apartmets(items);
             });
@@ -42,6 +42,9 @@
                     } 
                     if (user.Role.Id == 2) {
                         self.isHomeowner(true);
+                    }
+                    if (user.Role.id == 3) {
+                        self.isAdmin(true);
                     }
                 }
             });

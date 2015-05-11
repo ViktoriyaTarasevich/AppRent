@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRent.Common.ViewModels;
+using AppRent.Entities.Models;
 
 
 namespace AppRent.BusinessLogic.Services.Interface
@@ -16,5 +17,9 @@ namespace AppRent.BusinessLogic.Services.Interface
         FullApartmentViewModel GetApartmentById(int id);
 
         void Save(FullApartmentViewModel viewModel);
+
+        IEnumerable<ApartmentViewModel> GetApartmentsByUserId(string userId);
+
+        ApartmentViewModel MapToViewModel(Apartment model);
     }
 }

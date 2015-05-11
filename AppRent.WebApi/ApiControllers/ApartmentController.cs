@@ -37,6 +37,12 @@ namespace AppRent.WebApi.ApiControllers
             return _apartmentService.GetApartmentById(id);
         }
 
+        [Route("api/Apartment/GetApartmentsByUserId")]
+        public IEnumerable<ApartmentViewModel> GetApartmentsByUserId(string userId)
+        {
+            return _apartmentService.GetApartmentsByUserId(userId);
+        } 
+
         // POST: api/Apartment
         public void Post([FromBody]FullApartmentViewModel value)
         {

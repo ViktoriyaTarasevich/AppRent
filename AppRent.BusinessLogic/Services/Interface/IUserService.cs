@@ -15,5 +15,9 @@ namespace AppRent.BusinessLogic.Services.Interface
         UserViewModel MapToUserViewModel(ApplicationUser model);
 
         UserViewModel GetUserById(string id);
+
+        IEnumerable<FullUserInfoViewModel> GetUsers();
+
+        void Delete(string userId);
     }
 }

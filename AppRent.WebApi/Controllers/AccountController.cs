@@ -503,6 +503,40 @@ namespace AppRent.WebApi.Controllers
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
+        public JsonResult ChangerRoleToAdmin(string userId)
+        {
+           // _userManager.RemoveFromRole()
+            if (UserManager.IsInRole(userId, "User"))
+            {
+                UserManager.RemoveFromRole(userId, "User");
+            }
+            if (UserManager.IsInRole(userId, "Homeowner"))
+            {
+                UserManager.RemoveFromRole(userId, "Homeowner");
+            }
+            UserManager.AddToRole(userId, "Admin");
+            
+            return Json(null, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult ChangerRoleToUser(string userId)
+        {
+            // _userManager.RemoveFromRole()
+            if (UserManager.IsInRole(userId, "Admin"))
+            {
+                UserManager.RemoveFromRole(userId, "Admin");
+            }
+            if (UserManager.IsInRole(userId, "Homeowner"))
+            {
+                UserManager.RemoveFromRole(userId, "Homeowner");
+            }
+            UserManager.AddToRole(userId, "User");
+
+            return Json(null, JsonRequestBehavior.AllowGet);
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && UserManager != null)

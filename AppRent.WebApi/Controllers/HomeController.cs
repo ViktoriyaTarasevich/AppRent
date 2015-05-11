@@ -29,5 +29,9 @@ namespace AppRent.WebApi.Controllers
         {
             return Json(_userService.GetUserById(User.Identity.GetUserId()),JsonRequestBehavior.AllowGet);
         }
+
+
+        
+
     }
 }

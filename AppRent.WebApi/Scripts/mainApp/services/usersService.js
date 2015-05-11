@@ -12,8 +12,36 @@
                 });
             }
 
-            
+            self.getUsers = function () {
+                return $.ajax({
+                    method: 'GET',
+                    url: url
+                });
+            }
 
+            self.remove = function (id) {
+                return $.ajax({
+                    method: 'DELETE',
+                    url: url + id
+                });
+            }
+
+            self.setAdmin = function (id) {
+                return $.ajax({
+                    method: 'GET',
+                    url: '../Home/ChangerRoleToAdmin/'+id
+                  
+                });
+            }
+
+            self.setUser = function (id) {
+                return $.ajax({
+                    method: 'GET',
+                    url: '../Home/ChangerRoleToUser/'+id
+                   
+                });
+            }
+            
         }
 
         return new UsersService;

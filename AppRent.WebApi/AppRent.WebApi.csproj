@@ -244,6 +244,8 @@
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\jquery.bxslider.js" />
     <Content Include="Scripts\lodash.js" />
+    <Content Include="Scripts\mainApp\adminRoom\adminRoom.html" />
+    <Content Include="Scripts\mainApp\adminRoom\adminRoom.js" />
     <Content Include="Scripts\mainApp\apartment\apartment.html" />
     <Content Include="Scripts\mainApp\apartment\apartment.js" />
     <Content Include="Scripts\mainApp\apartment\myApartments.html" />

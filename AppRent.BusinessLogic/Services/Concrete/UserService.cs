@@ -17,7 +17,13 @@ namespace AppRent.BusinessLogic.Services.Concrete
 {
     public class UserService : IUserService
     {
+       // private readonly IApartmentService _apartmentService;
         private readonly IBaseRepository<ApplicationUser,string> _userRepository;
+        UserViewModel IUserService.MapToUserViewModel(ApplicationUser model)
+        {
+            return MapToUserViewModel(model);
+        }
+
         public UserService(IUnitOfWork unitOfWork)
         {
             _userRepository = unitOfWork.GetRepository<ApplicationUser, string>();
@@ -38,6 +44,50 @@ namespace AppRent.BusinessLogic.Services.Concrete
         public UserViewModel GetUserById(string id)
         {
             return MapToUserViewModel(_userRepository.GetById(id));
+        }
+
+        public IEnumerable<FullUserInfoViewModel> GetUsers()
+        {
+            var users = _userRepository.GetAll();
+            return users.ToList().Select(MapToFullUserInfoViewModel);
+        }
+
+        public FullUserInfoViewModel MapToFullUserInfoViewModel(ApplicationUser model)
+        {
+            var viewModel = new FullUserInfoViewModel
+            {
+                Id = model.Id,
+                Name = model.UserName,
+                Email = model.Email,
+                Rolename = model.Roles.First().RoleId,
+                Apartments = model.Apartments != null ?  model.Apartments.ToList().Select(MapToApartmentViewModel) : null
+            };
+
+            return viewModel;
+        }
+
+        public void Delete(string userId)
+        {
+            var user = _userRepository.GetById(userId);
+            if (user != null)
+            {
+                _userRepository.Delete(user);
+            }
+        }
+
+        public ApartmentViewModel MapToApartmentViewModel(Apartment model)
+        {
+            var viewModel = new ApartmentViewModel
+            {
+                Id = model.Id,
+                Price = model.Price,
+                RoomsCount = model.RoomsNumbers,
+                Street = model.House.Street.Title,
+                House = model.House.Number,
+                PathToPhoto = model.Photos.FirstOrDefault(x => x.IsMain).Path
+
+            };
+            return viewModel;
         }
 
     }

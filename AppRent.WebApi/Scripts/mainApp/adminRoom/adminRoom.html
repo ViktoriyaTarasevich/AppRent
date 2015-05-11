@@ -1,0 +1,50 @@
+﻿<div class="row" >
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Роль
+                </th>
+                <th>
+                    Квартиры
+                </th>
+                <th>Удалить</th>
+                <th>Сделать админом</th>
+                <th>Сделать юзером</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:users">
+            <tr>
+                <td data-bind="text:id"></td>
+                <td data-bind="text:name"></td>
+                <td data-bind="text:email"></td>
+
+                <td data-bind="text:rolename"></td>
+                <td >
+                    <div data-bind="visible: apartments.length > 0">
+                        <div data-bind="foreach:apartments">
+                            <span data-bind="text: 'ул.' + street"></span>
+                            <span data-bind="text: ' д.' + house"></span>
+                            <button style="display: inline" class="btn btn-danger" data-bind="click:$parents[1].removeApartment">Удалить</button>
+                        </div>
+                       
+                    </div>
+                    
+                </td>
+                <td><button class="btn btn-primary" data-bind="click:$parent.removeUser">Удалить юзера</button></td>
+                <td><button class="btn btn-primary" data-bind="click:$parent.setAdmin">Сделать админом</button></td>
+                <td><button class="btn btn-primary" data-bind="click:$parent.setUser">Сделать юзером</button></td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>

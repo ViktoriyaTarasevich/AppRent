@@ -55,6 +55,7 @@
     <Compile Include="ViewModels\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\FullApartmentViewModel.cs" />
+    <Compile Include="ViewModels\FullUserInfoViewModel.cs" />
     <Compile Include="ViewModels\GetViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManageUserViewModel.cs" />

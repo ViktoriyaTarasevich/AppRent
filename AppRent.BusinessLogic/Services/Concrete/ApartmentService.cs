@@ -28,7 +28,7 @@ namespace AppRent.BusinessLogic.Services.Concrete
             return result;
         }
 
-        private ApartmentViewModel MapToViewModel(Apartment model)
+        public ApartmentViewModel MapToViewModel(Apartment model)
         {
             var viewModel = new ApartmentViewModel
             {
@@ -76,7 +76,6 @@ namespace AppRent.BusinessLogic.Services.Concrete
                 Path = model.Path
             };
             return photoViewModel;
-
         }
 
         public AddressViewModel MapToAddressViewModel(House house)
@@ -102,5 +101,11 @@ namespace AppRent.BusinessLogic.Services.Concrete
             
 
         }
+
+        public IEnumerable<ApartmentViewModel> GetApartmentsByUserId(string userId)
+        {
+            var apartments = _apartmentRepository.GetAll().ToList().Where(x => x.ApplicationUserId == userId);
+            return apartments.Select(MapToViewModel);
+        } 
     }
 }

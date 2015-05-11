@@ -44,9 +44,9 @@ namespace AppRent.WebApi.ApiControllers
 
 
         // GET: api/User
-        public IEnumerable<string> Get()
+        public IEnumerable<FullUserInfoViewModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _userService.GetUsers();
         }
 
         // GET: api/User/5
@@ -66,8 +66,9 @@ namespace AppRent.WebApi.ApiControllers
         }
 
         // DELETE: api/User/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            _userService.Delete(id);
         }
     }
 }

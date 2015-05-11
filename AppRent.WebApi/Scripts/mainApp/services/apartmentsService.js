@@ -23,8 +23,7 @@
             self.getApartmentsByUserId = function (userId) {
                 return $.ajax({
                     method: 'GET',
-                    url: url + 'GetApartmentsByUserId',
-                    data: {userId : userId}
+                    url: url + 'GetApartmentsByUserId/'+userId
                 });
             }
 
@@ -35,6 +34,8 @@
                     data: requestData
                 });
             }
+
+            
 
             self.updateApartment = function (id, requestData) {
                 return $.ajax({
