@@ -17,11 +17,26 @@ namespace AppRent.BusinessLogic.Services.Concrete
 {
     public class ApartmentService : IApartmentService
     {
-        private readonly IBaseRepository<Apartment,int> _apartmentRepository;
+        private readonly IBaseRepository<Apartment, int> _apartmentRepository;
         private readonly IUserService _userService;
+        private readonly IBaseRepository<City, int> _cityRepository;
+        private readonly IBaseRepository<District, int> _districtRepository;
+        private readonly IBaseRepository<Street, int> _streetRepository;
+        private readonly IBaseRepository<House, int> _houseRepository;
+        private readonly IBaseRepository<Photo, int> _photoRepository; 
+        private readonly IUnitOfWork _unitOfWork;
+ 
         public ApartmentService(IUnitOfWork unitOfWork, IUserService userService)
         {
             _apartmentRepository = unitOfWork.GetRepository<Apartment,int>();
+            _cityRepository = unitOfWork.GetRepository<City, int>();
+            _districtRepository = unitOfWork.GetRepository<District, int>();
+            _streetRepository = unitOfWork.GetRepository<Street, int>();
+            _houseRepository = unitOfWork.GetRepository<House, int>();
+            _photoRepository = unitOfWork.GetRepository<Photo, int>();
+
+            _unitOfWork = unitOfWork;
+
             _userService = userService;
         }
 
@@ -166,8 +181,111 @@ namespace AppRent.BusinessLogic.Services.Concrete
         public void Save(FullApartmentViewModel viewModel)
         {
             var address = viewModel.Address;
-            
 
+            var houseId = SaveHouse(address, SaveStreet(address, SaveDistrict(address, SaveCity(address))));
+
+            _apartmentRepository.Insert(new Apartment
+            {
+                Description = viewModel.Description,
+                HouseId = houseId,
+                Price = viewModel.Price,
+                ApplicationUserId = viewModel.User.Id,
+                Photos = viewModel.Photos.Select(MapToPhoto).ToList()
+            });
+        }
+
+        private Photo MapToPhoto(PhotoViewModel viewModel)
+        {
+            var photo = new Photo()
+            {
+                Description = viewModel.Description,
+                Path = viewModel.Path,
+                IsMain = viewModel.IsMain
+            };
+            _photoRepository.Insert(photo);
+            _unitOfWork.Save();
+            return photo;
+        } 
+
+
+        private int SaveCity(AddressViewModel address)
+        {
+            var city = _cityRepository.GetAll().FirstOrDefault(x => x.Title == address.City);
+            int cityId;
+            if (city != null)
+            {
+                cityId = city.Id;
+            }
+            else
+            {
+                var tempcity = _cityRepository.Insert(new City()
+                {
+                    Title = address.City
+                });
+                _unitOfWork.Save();
+                cityId = tempcity.Id;
+            }
+            
+            return cityId;
+        }
+
+        private int SaveDistrict(AddressViewModel address,int cityId)
+        {
+            var district = _districtRepository.GetAll().FirstOrDefault(x => x.Title == address.District);
+            int id;
+            if (district != null)
+            {
+                id = district.Id;
+            }
+            else
+            {
+                var temp = _districtRepository.Insert(new District(){
+                    Title = address.District,
+                    CityId = cityId
+                });
+                _unitOfWork.Save();
+                id = temp.Id;
+            }
+
+            return id;
+        }
+
+        private int SaveStreet(AddressViewModel address, int districtId)
+        {
+            var street = _streetRepository.GetAll().FirstOrDefault(x => x.Title == address.Street);
+            int id;
+            if (street != null)
+            {
+                id = street.Id;
+            }
+            else
+            {
+                var temp = _streetRepository.Insert(new Street()
+                {
+                    Title = address.Street,
+                    DistrictId =  districtId
+                });
+                _unitOfWork.Save();
+                id = temp.Id;
+            }
+
+            return id;
+        }
+
+        private int SaveHouse(AddressViewModel address,int streetId)
+        {
+            int id;
+            var temp = _houseRepository.Insert(new House
+            {
+                Number = address.HouseNumber,
+                Corp = Int32.Parse(address.Corpus),
+                StreetId = streetId
+
+            });
+            _unitOfWork.Save();
+            id = temp.Id;
+
+            return id;
         }
 
         public void Update(int id, ApartmentInfoViewModel viewModel)

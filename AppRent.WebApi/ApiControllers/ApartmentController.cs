@@ -47,6 +47,7 @@ namespace AppRent.WebApi.ApiControllers
         public void Post([FromBody]FullApartmentViewModel value)
         {
             _apartmentService.Save(value);
+            _unitOfWork.Save();
         }
 
         // PUT: api/Apartment/5
