@@ -29,7 +29,7 @@
             self.setAdmin = function (id) {
                 return $.ajax({
                     method: 'GET',
-                    url: '../Home/ChangerRoleToAdmin/'+id
+                    url: '../Account/ChangerRoleToAdmin?userId=' + id
                   
                 });
             }
@@ -37,7 +37,7 @@
             self.setUser = function (id) {
                 return $.ajax({
                     method: 'GET',
-                    url: '../Home/ChangerRoleToUser/'+id
+                    url: '../Account/ChangerRoleToUser?userId=' + id
                    
                 });
             }

@@ -9,6 +9,7 @@ using Antlr.Runtime.Misc;
 
 using AppRent.BusinessLogic.Services.Interface;
 using AppRent.Common.ViewModels;
+using AppRent.DataAccess.UnitOfWork.Interface;
 
 using Microsoft.AspNet.Identity;
 
@@ -18,10 +19,12 @@ namespace AppRent.WebApi.ApiControllers
     public class UserController : ApiController
     {
         private readonly IUserService _userService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IUnitOfWork unitOfWork)
         {
             _userService = userService;
+            _unitOfWork = unitOfWork;
         }
 
 
@@ -69,6 +72,7 @@ namespace AppRent.WebApi.ApiControllers
         public void Delete(string id)
         {
             _userService.Delete(id);
+            _unitOfWork.Save();
         }
     }
 }

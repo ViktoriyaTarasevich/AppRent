@@ -21,5 +21,7 @@ namespace AppRent.BusinessLogic.Services.Interface
         IEnumerable<ApartmentViewModel> GetApartmentsByUserId(string userId);
 
         ApartmentViewModel MapToViewModel(Apartment model);
+
+        void Delete(int id);
     }
 }

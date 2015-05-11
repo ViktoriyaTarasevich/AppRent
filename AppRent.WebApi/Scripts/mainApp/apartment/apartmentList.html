@@ -1,7 +1,7 @@
-﻿<div class="row" data-bind="if: isUser || isHomeowner">
+﻿<div class="row" data-bind="if: (isUser || isHomeowner || isAdmin)">
   <a class="btn btn-default" href="#newApartment">Добавить квартиру</a>  
 </div>
-<div class="row" data-bind="if: isHomeowner">
+<div class="row" data-bind="if: (isHomeowner || isAdmin)">
     <a class="btn btn-default" href="#myApartments">Мои квартиры</a>
 </div>
 <div class="row" data-bind="if: isAdmin">

@@ -29,6 +29,7 @@
             });
 
             function downloadUsers() {
+                self.users.removeAll();
                 usersService.getUsers().then(function (users) {
                     self.users(users);
                 });
@@ -39,21 +40,30 @@
                 app.showMessage("Удалить юзера?", "Удаление юзера", ["Yes", "No"]).then(function (dialogResult) {
                     if (dialogResult === "Yes") {
                         usersService.remove(item.id);
+                        self.users.remove(item);
                     }
                 });
 
             }
 
             self.removeApartment = function (item) {
-                apartmentService.remove(item.id);
+                app.showMessage("Удалить квартиру?", "Удаление квартиры", ["Yes", "No"]).then(function (dialogResult) {
+                    if (dialogResult === "Yes") {
+                        apartmentService.remove(item.id);
+                        downloadUsers();
+                    }
+                });
+                
             }
 
             self.setAdmin = function (item) {
                 usersService.setAdmin(item.id);
+                downloadUsers();
             }
 
             self.setUser = function (item) {
                 usersService.setUser(item.id);
+                downloadUsers();
             }
 
             self.setHomeowner = function (item) {

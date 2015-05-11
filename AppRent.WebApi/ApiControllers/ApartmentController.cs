@@ -57,6 +57,8 @@ namespace AppRent.WebApi.ApiControllers
         // DELETE: api/Apartment/5
         public void Delete(int id)
         {
+            _apartmentService.Delete(id);
+            _unitOfWork.Save();
         }
     }
 }

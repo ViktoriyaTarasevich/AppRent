@@ -43,7 +43,7 @@
                     if (user.Role.Id == 2) {
                         self.isHomeowner(true);
                     }
-                    if (user.Role.id == 3) {
+                    if (user.Role.Id == 3) {
                         self.isAdmin(true);
                     }
                 }

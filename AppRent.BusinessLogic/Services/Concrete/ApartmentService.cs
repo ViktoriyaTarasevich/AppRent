@@ -102,6 +102,15 @@ namespace AppRent.BusinessLogic.Services.Concrete
 
         }
 
+        public void Delete(int id)
+        {
+            var apartment = _apartmentRepository.GetById(id);
+            if (apartment != null)
+            {
+                _apartmentRepository.Delete(apartment);
+            }
+        }
+
         public IEnumerable<ApartmentViewModel> GetApartmentsByUserId(string userId)
         {
             var apartments = _apartmentRepository.GetAll().ToList().Where(x => x.ApplicationUserId == userId);
