@@ -1,6 +1,6 @@
 ﻿define([
-    'durandal/system', 'durandal/app', 'mainApp/services/apartmentsService', 'knockout', 'jquery',  'bxslider'],
-    function (system, app, apartmentService, ko,$) {
+    'durandal/system', 'durandal/app', 'mainApp/services/apartmentsService', 'knockout', 'jquery', 'bxslider', 'mainApp/services/usersService'],
+    function (system, app, apartmentService, ko, $,slider, usersService) {
 
         var apartment = function () {
             
@@ -16,7 +16,31 @@
             });
             self.carouselOptions = ko.observable();
 
-            
+            self.currentUserId = ko.observable();
+
+            usersService.getCurrentUser().done(function (user) {
+                self.currentUserId(user.Id);
+            });
+
+            self.isMyApartment = ko.computed(function () {
+                if (typeof self.currentUserId() != "undefined" && typeof self.apartment() != "undefined") {
+                    if (self.currentUserId() === self.apartment().user.id) {
+                        return true;
+                    }
+                }
+                
+                return false;
+            }, self);
+
+            self.save = function (item) {
+                apartmentService.updateApartment(item.id,{
+                    price: item.price,
+                    roomsCount: item.roomsCount,
+                    description: item.description
+                }).then(function () {
+                    app.showMessage('Информация обновлена!');
+                });
+            }
         }
 
         ko.bindingHandlers.imageCarousel = {

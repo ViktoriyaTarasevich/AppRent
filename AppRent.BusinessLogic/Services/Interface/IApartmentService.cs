@@ -24,5 +24,7 @@ namespace AppRent.BusinessLogic.Services.Interface
         ApartmentViewModel MapToViewModel(Apartment model);
 
         void Delete(int id);
+
+        void Update(int id, ApartmentInfoViewModel viewModel);
     }
 }

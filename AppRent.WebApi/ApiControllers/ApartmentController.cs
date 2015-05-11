@@ -50,8 +50,10 @@ namespace AppRent.WebApi.ApiControllers
         }
 
         // PUT: api/Apartment/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]ApartmentInfoViewModel value)
         {
+            _apartmentService.Update(id, value);
+            _unitOfWork.Save();
         }
 
         // DELETE: api/Apartment/5

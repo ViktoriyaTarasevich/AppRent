@@ -170,6 +170,18 @@ namespace AppRent.BusinessLogic.Services.Concrete
 
         }
 
+        public void Update(int id, ApartmentInfoViewModel viewModel)
+        {
+            var apartment = _apartmentRepository.GetById(id);
+            if (apartment != null)
+            {
+                apartment.Description = viewModel.Description;
+                apartment.RoomsNumbers = viewModel.RoomsCount;
+                apartment.Price = viewModel.Price;
+                _apartmentRepository.Update(id,apartment);
+            }
+        }
+
         public void Delete(int id)
         {
             var apartment = _apartmentRepository.GetById(id);

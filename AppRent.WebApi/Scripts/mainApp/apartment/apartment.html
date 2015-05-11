@@ -1,49 +1,85 @@
 ﻿<!--<div data-bind="with:apartment">
-    <h3><span class="label label-default" data-bind="text: '№' + id"></span></h3>
+        <h3><span class="label label-default" data-bind="text: '№' + id"></span></h3>
 
-    <div class="jumbotron">
-        <div data-bind="foreach:photos">
-            <div data-bind="if: isMain">
-                <img data-bind="attr:{src:path}" />
-                <span data-bind="with:$parent.address">
-                    <span data-bind="text:city"></span>,
-                    <span data-bind="text:district"></span>,
-                    <span data-bind="text:street"></span>,
-                    <span data-bind="text:houseNumber"></span>
-                    <span data-bind="text:corpus"></span>
-                </span>
-                <h4 data-bind="text: $parent.description"></h4>
-                <h4>Количество комнат: <span data-bind="text: $parent.roomsCount"></span></h4>
-                <h4>Цена: <span data-bind="text: $parent.price"></span> $</h4>
+        <div class="jumbotron">
+            <div data-bind="foreach:photos">
+                <div data-bind="if: isMain">
+                    <img data-bind="attr:{src:path}" />
+                    <span data-bind="with:$parent.address">
+                        <span data-bind="text:city"></span>,
+                        <span data-bind="text:district"></span>,
+                        <span data-bind="text:street"></span>,
+                        <span data-bind="text:houseNumber"></span>
+                        <span data-bind="text:corpus"></span>
+                    </span>
+                    <h4 data-bind="text: $parent.description"></h4>
+                    <h4>Количество комнат: <span data-bind="text: $parent.roomsCount"></span></h4>
+                    <h4>Цена: <span data-bind="text: $parent.price"></span> $</h4>
+                </div>
             </div>
         </div>
-    </div>
-</div>-->
-<div class="row" data-bind="with:apartment" >
+    </div>-->
+<div data-bind="ifnot:isMyApartment">
+    <div class="row" data-bind="with:apartment">
 
-    <ul class="bxSlider"  data-bind="foreach: photos, imageCarousel: photos">
-        <li style="margin-left: 300px">
-            <img data-bind="attr:{src:path}" height="400" />
-        </li>
-    </ul>
-    
-    <div class="jumbotron">
-        <div data-bind="with:address">
-            <div id="city" data-bind="text:city"></div>
-            <div id="district" data-bind="text:district"></div>
-            <div id="street" data-bind="text:street"></div>
-            <div id="house" data-bind="text:houseNumber"></div>
+        <ul class="bxSlider" data-bind="foreach: photos, imageCarousel: photos">
+            <li style="margin-left: 300px">
+                <img data-bind="attr:{src:path}" height="400" />
+            </li>
+        </ul>
+
+        <div class="jumbotron">
+            <div data-bind="with:address">
+                <div id="city" data-bind="text:'Город: ' + city"></div>
+                <div id="district" data-bind="text:'Район: '+district"></div>
+                <div id="street" data-bind="text:'Улица: '+street"></div>
+                <div id="house" data-bind="text:'Корпус:' + houseNumber"></div>
+            </div>
+
+
+            <div id="description" data-bind="text:'Описание: ' + description"></div>
+
+            <div id="price" data-bind="text:'Цена: '+price + '$'"></div>
+            <div id="roomsCount" data-bind="text:'Количество комнат: ' + roomsCount"></div>
+            <div data-bind="with:user">
+                <div id="email" data-bind="text:'Почта: ' + email"></div>
+                <div id="name" data-bind="text:'Имя: ' + name"></div>
+            </div>
+
         </div>
-        
-        
-        <div id="description" data-bind="text:description"></div>
-        
-        <div id="price" data-bind="text:price"></div>
-        <div id="roomsCount" data-bind="text:roomsCount"></div>
-        <div data-bind="with:user">
-            <div id="email" data-bind="text:email"></div>
-            <div id="name" data-bind="text:name"></div>
-        </div>
-        
     </div>
+
 </div>
+
+<div data-bind="if:isMyApartment">
+    <div class="row" data-bind="with:apartment">
+        <ul class="bxSlider" data-bind="foreach: photos, imageCarousel: photos">
+            <li style="margin-left: 300px">
+                <img data-bind="attr:{src:path}" height="400" />
+            </li>
+        </ul>
+
+        <div class="jumbotron">
+            <div data-bind="with:address">
+                <div id="city" data-bind="text:'Город: ' + city"></div>
+                <div id="district" data-bind="text:'Район: '+district"></div>
+                <div id="street" data-bind="text:'Улица: '+street"></div>
+                <div id="corpus" data-bind="text:'Корпус:' + corpus"></div>
+                <div id="house" data-bind="text:'Дом:' + houseNumber"></div>
+            </div>
+
+
+            <textarea id="description" data-bind="value:description"></textarea>
+
+            <input type="number" id="price" data-bind="value:price" />
+            <input type="roomsCount" id="price" data-bind="value:roomsCount" />
+            <button class="btn btn-default" data-bind="click:$parent.save">Сохранить</button>
+
+            <div data-bind="with:user">
+                <div id="email" data-bind="text:'Почта: ' + email"></div>
+                <div id="name" data-bind="text:'Имя: ' + name"></div>
+            </div>
+
+        </div>
+        </div>
+    </div>
