@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using AppRent.BusinessLogic.Services.Interface;
+using AppRent.Common.Enums;
+using AppRent.Common.Filters;
 using AppRent.Common.ViewModels;
 using AppRent.DataAccess.Repositories.Interface;
 using AppRent.DataAccess.UnitOfWork.Interface;
@@ -22,11 +25,68 @@ namespace AppRent.BusinessLogic.Services.Concrete
             _userService = userService;
         }
 
-        public IEnumerable<ApartmentViewModel> GetApartments()
+        public IEnumerable<ApartmentViewModel> GetApartments(ApartmentFilter filter)
         {
-            var result = _apartmentRepository.GetAll().ToList().Select(MapToViewModel);
-            return result;
+            if (filter == null)
+            {
+                var result = _apartmentRepository.GetAll().ToList().Select(MapToViewModel);
+                return result;
+            }
+            else
+            {
+                var chain = _apartmentRepository.GetAll().ToList();
+                if (!String.IsNullOrEmpty(filter.CityFilter.City))
+                {
+                    if (filter.CityFilter.ComparisonType == ComparisonType.CONTAINS)
+                    {
+                        chain =  chain.Where(x => x.House.Street.District.City.Title.Contains(filter.CityFilter.City)).ToList();
+                    }
+                    if (filter.CityFilter.ComparisonType == ComparisonType.EQUAL)
+                    {
+                        chain = chain.Where(x => x.House.Street.District.City.Title == filter.CityFilter.City).ToList();
+                    }
+                    if (filter.CityFilter.ComparisonType == ComparisonType.NOT_EQUAL)
+                    {
+                        chain = chain.Where(x => x.House.Street.District.City.Title != filter.CityFilter.City).ToList();
+                    }
+                }
+                if (filter.PriceFilter.Price != 0)
+                {
+                    if (filter.PriceFilter.ComparisonType == ComparisonType.LESS)
+                    {
+                        chain = chain.Where(x => x.Price < filter.PriceFilter.Price).ToList();
+                    }
+                    if (filter.PriceFilter.ComparisonType == ComparisonType.EQUAL)
+                    {
+                        chain = chain.Where(x => x.Price == filter.PriceFilter.Price).ToList();
+                    }
+                    if (filter.PriceFilter.ComparisonType == ComparisonType.MORE)
+                    {
+                        chain = chain.Where(x => x.Price > filter.PriceFilter.Price).ToList();
+                    }
+                }
+                if (filter.RoomsCountFilter.RoomsCount != 0)
+                {
+                    if (filter.RoomsCountFilter.ComparisonType == ComparisonType.LESS)
+                    {
+                        chain = chain.Where(x => x.RoomsNumbers < filter.RoomsCountFilter.RoomsCount).ToList();
+                    }
+                    if (filter.RoomsCountFilter.ComparisonType == ComparisonType.EQUAL)
+                    {
+                        chain = chain.Where(x => x.RoomsNumbers == filter.RoomsCountFilter.RoomsCount).ToList();
+                    }
+                    if (filter.RoomsCountFilter.ComparisonType == ComparisonType.MORE)
+                    {
+                        chain = chain.Where(x => x.RoomsNumbers > filter.RoomsCountFilter.RoomsCount).ToList();
+                    }
+                }
+                return chain.Select(MapToViewModel);
+            }
+
+            
         }
+
+
 
         public ApartmentViewModel MapToViewModel(Apartment model)
         {

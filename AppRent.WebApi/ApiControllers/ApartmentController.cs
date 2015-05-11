@@ -28,7 +28,7 @@ namespace AppRent.WebApi.ApiControllers
         // GET: api/Apartment
         public IEnumerable<ApartmentViewModel> Get([FromUri]ApartmentFilter filter)
         {
-            return _apartmentService.GetApartments();
+            return _apartmentService.GetApartments(filter);
         }
 
         // GET: api/Apartment/5
