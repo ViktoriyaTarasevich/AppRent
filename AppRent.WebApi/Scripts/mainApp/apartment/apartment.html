@@ -27,5 +27,23 @@
         </li>
     </ul>
     
-    <div id="map" data-bind="maps:photos"></div>
+    <div class="jumbotron">
+        <div data-bind="with:address">
+            <div id="city" data-bind="text:city"></div>
+            <div id="district" data-bind="text:district"></div>
+            <div id="street" data-bind="text:street"></div>
+            <div id="house" data-bind="text:houseNumber"></div>
+        </div>
+        
+        
+        <div id="description" data-bind="text:description"></div>
+        
+        <div id="price" data-bind="text:price"></div>
+        <div id="roomsCount" data-bind="text:roomsCount"></div>
+        <div data-bind="with:user">
+            <div id="email" data-bind="text:email"></div>
+            <div id="name" data-bind="text:name"></div>
+        </div>
+        
+    </div>
 </div>

@@ -19,9 +19,9 @@
             self.isUser = ko.observable(false);
             self.isAdmin = ko.observable(false);
             self.searchOptions = {
-                cityFilter :{ city: ko.observable, comprasionType: ko.observable()} ,
-                priceFilter: { price: ko.observable, comprasionType: ko.observable() },
-                roomsCountFilter: { roomsCount: ko.observable, comprasionType: ko.observable() }
+                cityFilter: { city: ko.observable(), comparisonType: ko.observable() },
+                priceFilter: { price: ko.observable(), comparisonType: ko.observable() },
+                roomsCountFilter: { roomsCount: ko.observable(), comparisonType: ko.observable() }
             }
             self.apartmets = ko.observableArray();
             

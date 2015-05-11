@@ -27,7 +27,7 @@ namespace AppRent.BusinessLogic.Services.Concrete
 
         public IEnumerable<ApartmentViewModel> GetApartments(ApartmentFilter filter)
         {
-            if (filter == null)
+            if (filter == null || filter.CityFilter == null || filter.PriceFilter == null || filter.RoomsCountFilter == null)
             {
                 var result = _apartmentRepository.GetAll().ToList().Select(MapToViewModel);
                 return result;
@@ -64,6 +64,10 @@ namespace AppRent.BusinessLogic.Services.Concrete
                     {
                         chain = chain.Where(x => x.Price > filter.PriceFilter.Price).ToList();
                     }
+                    if (filter.PriceFilter.ComparisonType == ComparisonType.NOT_EQUAL)
+                    {
+                        chain = chain.Where(x => x.Price != filter.PriceFilter.Price).ToList();
+                    }
                 }
                 if (filter.RoomsCountFilter.RoomsCount != 0)
                 {
@@ -78,6 +82,10 @@ namespace AppRent.BusinessLogic.Services.Concrete
                     if (filter.RoomsCountFilter.ComparisonType == ComparisonType.MORE)
                     {
                         chain = chain.Where(x => x.RoomsNumbers > filter.RoomsCountFilter.RoomsCount).ToList();
+                    }
+                    if (filter.RoomsCountFilter.ComparisonType == ComparisonType.NOT_EQUAL)
+                    {
+                        chain = chain.Where(x => x.RoomsNumbers != filter.RoomsCountFilter.RoomsCount).ToList();
                     }
                 }
                 return chain.Select(MapToViewModel);
