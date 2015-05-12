@@ -1,15 +1,18 @@
-﻿<div class="row" data-bind="if: (isUser() || isHomeowner() || isAdmin())">
-  <a class="btn btn-default" href="#newApartment">Добавить квартиру</a>  
-</div>
-<div class="row" data-bind="if: (isHomeowner() || isAdmin())">
-    <a class="btn btn-default" href="#myApartments">Мои квартиры</a>
-</div>
-<div class="row" data-bind="if: isAdmin()">
-    <a class="btn btn-default" href="#adminRoom">Страница администратора</a>
+﻿<div style="margin: 20px">
+    <div style="margin: 5px;display: inline" data-bind="if: (isUser() || isHomeowner() || isAdmin())">
+        <a class="btn btn-primary" href="#newApartment">Добавить квартиру</a>
+    </div>
+    <div style="margin: 5px;display: inline" data-bind="if: (isHomeowner() || isAdmin())">
+        <a class="btn btn-primary" href="#myApartments">Мои квартиры</a>
+    </div>
+    <div style="margin: 5px;display: inline" data-bind="if: isAdmin()">
+        <a class="btn btn-primary" href="#adminRoom">Страница администратора</a>
+    </div> 
 </div>
 
-<div class="row" style="margin-top:20px">
-    <form class="form-inline" data-bind="with: searchOptions">
+
+<div class="row" style="margin:20px">
+    <form class="form-inline" style="margin: 5px;" data-bind="with: searchOptions">
         <div >
             <div class="form-group" data-bind="with:cityFilter">
                 <div >
