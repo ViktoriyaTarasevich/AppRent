@@ -11,13 +11,17 @@
 
         }
 
-        MyApartments.prototype.activate = function (id) {
+        MyApartments.prototype.activate = function () {
             var self = this;
             self.apartmets = ko.observableArray();
 
-            apartmentService.getApartmentsByUserId(id).then(function (items) {
-                self.apartmets(items);
-            });
+            function downloadApartments(id) {
+                apartmentService.getApartmentsByUserId(id).then(function (items) {
+                    self.apartmets(items);
+                });
+            }
+
+           
 
             self.currentUserId = ko.observable();
 
@@ -26,11 +30,7 @@
             });
 
             self.currentUserId.subscribe(function (item) {
-                if (item === id) {
-                    usersService.getCurrentUser().done(function (user) {
-                        self.currentUserId(user.Id);
-                    });
-                }
+                downloadApartments(item);
             });
 
         }

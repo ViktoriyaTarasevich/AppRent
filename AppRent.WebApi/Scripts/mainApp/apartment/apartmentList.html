@@ -1,10 +1,10 @@
-﻿<div class="row" data-bind="if: (isUser || isHomeowner || isAdmin)">
+﻿<div class="row" data-bind="if: (isUser() || isHomeowner() || isAdmin())">
   <a class="btn btn-default" href="#newApartment">Добавить квартиру</a>  
 </div>
-<div class="row" data-bind="if: (isHomeowner || isAdmin)">
+<div class="row" data-bind="if: (isHomeowner() || isAdmin())">
     <a class="btn btn-default" href="#myApartments">Мои квартиры</a>
 </div>
-<div class="row" data-bind="if: isAdmin">
+<div class="row" data-bind="if: isAdmin()">
     <a class="btn btn-default" href="#adminRoom">Страница администратора</a>
 </div>
 
@@ -12,7 +12,10 @@
     <form class="form-inline" data-bind="with: searchOptions">
         <div class="form-group" data-bind="with:cityFilter">
             <label for="inputDistrict">Город</label>
-            <select class="form-control col-md-1" data-bind="options: $parents[1].searchTypeForString, optionsText: 'type', optionsValue: 'id', value: comparisonType"></select>
+            <div class="col-md-1">
+                <select class="form-control" data-bind="options: $parents[1].searchTypeForString, optionsText: 'type', optionsValue: 'id', value: comparisonType"></select>
+            </div>
+            
             <input type="text" class="form-control" id="inputDistrict" data-bind="value: city"/>
         </div>
         <div class="form-group" data-bind="with:priceFilter">

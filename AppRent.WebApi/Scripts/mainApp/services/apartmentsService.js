@@ -23,7 +23,7 @@
             self.getApartmentsByUserId = function (userId) {
                 return $.ajax({
                     method: 'GET',
-                    url: url + 'GetApartmentsByUserId/'+userId
+                    url: url + 'GetApartmentsByUserId?userId='+userId
                 });
             }
 
