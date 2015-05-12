@@ -17,7 +17,7 @@ namespace AppRent.BusinessLogic.Services.Concrete
 {
     public class UserService : IUserService
     {
-       // private readonly IApartmentService _apartmentService;
+       
         private readonly IBaseRepository<ApplicationUser,string> _userRepository;
         UserViewModel IUserService.MapToUserViewModel(ApplicationUser model)
         {

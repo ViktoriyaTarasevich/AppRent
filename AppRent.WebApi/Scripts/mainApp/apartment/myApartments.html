@@ -1,5 +1,5 @@
-﻿<div class="row">
-    <div data-bind="foreach: apartmets">
+﻿<div class="row" style="margin: 20px">
+    <div data-bind="foreach: apartmets"> 
 
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
@@ -11,7 +11,8 @@
                     </h3>
                     <p>Количество комнат: <span data-bind="text:roomsCount"></span></p>
 
-                    <p><a class="btn btn-primary" role="button" data-bind="attr:{href: '#apartments/'+id}">Show more</a>
+                    <p style="display: inline"><a class="btn btn-primary" role="button" data-bind="attr:{href: '#apartments/'+id}">Подробнее</a>
+                    <p style="display: inline;float: right"><a class="btn btn-danger" role="button" data-bind="click:$parent.remove">Удалить</a>
                 </div>
             </div>
         </div>

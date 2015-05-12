@@ -38,8 +38,8 @@ namespace AppRent.DataAccess.Contexts
 
         public DbSet<Street> Streets { get; set; }
 
-        public DbSet<House> Houses { get; set; } 
+        public DbSet<House> Houses { get; set; }
 
-     
+       
     }
 }

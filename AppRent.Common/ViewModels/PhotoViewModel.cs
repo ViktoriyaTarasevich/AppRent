@@ -15,5 +15,9 @@ namespace AppRent.Common.ViewModels
         public string Description { get; set; }
 
         public bool IsMain { get; set; }
+
+        public string Name { get; set; }
+
+        public string Base64 { get; set; }
     }
 }

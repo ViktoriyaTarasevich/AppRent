@@ -33,6 +33,15 @@
                 downloadApartments(item);
             });
 
+            self.remove = function (item) {
+                app.showMessage("Удалить квартиру?", "Удаление квартиры", ["Yes", "No"]).then(function (dialogResult) {
+                    if (dialogResult === "Yes") {
+                        apartmentService.removeApartment(item.id);
+                        downloadApartments(self.currentUserId());
+                    }
+                });
+            }
+
         }
 
         

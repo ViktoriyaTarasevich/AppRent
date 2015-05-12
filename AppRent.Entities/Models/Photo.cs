@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace AppRent.Entities.Models
 
         public bool IsMain { get; set; }
 
-        public Apartment Apartment { get; set; } 
+        [Column("Apartment_Id")]
+        public int? ApartmentId { get; set; }
+
+        public virtual Apartment Apartment { get; set; } 
     }
 }

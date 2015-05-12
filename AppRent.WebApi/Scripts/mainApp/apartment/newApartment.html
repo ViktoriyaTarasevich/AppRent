@@ -1,4 +1,7 @@
-﻿<div class="row container" style="margin-top:70px">
+﻿
+<h4>Добавить квартиру</h4>
+<div class="row container" style="margin-top:70px">
+    
     <form class="form-horizontal" data-bind="with: apartment">
         <div class="form-group">
             <div class="input-group">
@@ -59,11 +62,12 @@
 
 
         <div class="form-group">
-            <input type="file" name="upload" id="upload" multiple data-bind="value:photos">
+            <input type="file"
+                   data-bind="file: {data: fileInput, name: fileName}">
         </div>
 
 
 
-        <button type="submit" class="btn btn-primary" data-bind="click:$parent.save">Save</button>
+        <button type="submit" class="btn btn-primary" data-bind="click:$parent.save">Сохранить</button>
     </form>
 </div>

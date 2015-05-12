@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 using AppRent.BusinessLogic.Services.Interface;
 using AppRent.Common.Enums;
@@ -190,23 +192,33 @@ namespace AppRent.BusinessLogic.Services.Concrete
                 HouseId = houseId,
                 Price = viewModel.Price,
                 ApplicationUserId = viewModel.User.Id,
+                RoomsNumbers = viewModel.RoomsCount,
                 Photos = viewModel.Photos.Select(MapToPhoto).ToList()
             });
         }
 
         private Photo MapToPhoto(PhotoViewModel viewModel)
         {
+            SavePhoto(viewModel);
             var photo = new Photo()
             {
                 Description = viewModel.Description,
-                Path = viewModel.Path,
-                IsMain = viewModel.IsMain
+                Path = @"../Content/photos/" + viewModel.Name,
+                IsMain = true
             };
+
+
             _photoRepository.Insert(photo);
             _unitOfWork.Save();
             return photo;
-        } 
+        }
 
+
+        private void SavePhoto(PhotoViewModel viewModel)
+        {
+            var base64Only = Regex.Split(viewModel.Base64, "base64,");
+            File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory+ @"\Content\photos\" + viewModel.Name, Convert.FromBase64String(base64Only[1]));
+        }
 
         private int SaveCity(AddressViewModel address)
         {
@@ -303,8 +315,15 @@ namespace AppRent.BusinessLogic.Services.Concrete
         public void Delete(int id)
         {
             var apartment = _apartmentRepository.GetById(id);
+            
+
             if (apartment != null)
             {
+                var photos = _photoRepository.GetAll().ToList().Where(x => x.ApartmentId == id).ToList();
+                foreach (var photo in photos)
+                {
+                    _photoRepository.Delete(photo);
+                }
                 _apartmentRepository.Delete(apartment);
             }
         }
